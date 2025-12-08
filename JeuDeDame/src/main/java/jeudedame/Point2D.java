@@ -134,7 +134,7 @@ public class Point2D implements Serializable {
         if ((p==null)||(this==null)){
             return -1;
         } else{
-            return Math.sqrt(Math.pow((p.x-this.x),2)+Math.pow((p.y-this.y),2));
+            return Math.sqrt(Math.pow((this.x)-p.x,2)+Math.pow((p.y-this.y),2));
         }
         
     } 
