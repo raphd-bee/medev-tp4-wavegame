@@ -57,13 +57,14 @@ public class Plateau implements Serializable {
             System.out.println();
         }
     }
-    
+
     public void bougerPiece(int x1, int y1, int x2, int y2) {
         Piece p = grille[x1][y1];
         if (p != null) {
             p.setPos(new Point2D(x2, y2));
             grille[x2][y2] = p;
             grille[x1][y1] = null;
+
         }
     }
 }

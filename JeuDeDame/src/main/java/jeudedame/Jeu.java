@@ -1,24 +1,39 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package jeudedame;
 
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
+import java.io.*;
 
-/**
- *
- * @author michel
- */
-public class Jeu {
+public class Jeu implements Serializable {
+    
+    private Plateau plateau;
+    private boolean tourAuNoir;
+
+    public Jeu() {
+        this.plateau = new Plateau();
+        this.tourAuNoir = false;
+    }
+    
+    public Plateau getPlateau() { return plateau; }
+    
+    public String getJoueurCourant() {
+        return tourAuNoir ? "NOIR" : "BLANC";
+    }
+
+    public void changerTour() {
+        tourAuNoir = !tourAuNoir;
+    }
+    
+    public boolean estMonTour(Piece p) {
+        if (p == null) return false;
+        String couleurPiece = p.getCouleur();
+        if (tourAuNoir && couleurPiece.equals("NOIR")) return true;
+        if (!tourAuNoir && couleurPiece.equals("BLANC")) return true;
+        return false;
+    }
+
     public void sauvegarder(String nomFichier) {
         try (ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(nomFichier))) {
             out.writeObject(this);
-            System.out.println("Partie sauvegardée : " + nomFichier);
+            System.out.println(">> Partie sauvegardée dans : " + nomFichier);
         } catch (IOException e) {
             System.out.println("Erreur sauvegarde : " + e.getMessage());
         }
