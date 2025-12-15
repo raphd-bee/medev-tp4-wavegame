@@ -15,12 +15,10 @@ public class JeuDeDame {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         Jeu partie = new Jeu();
-        
         System.out.println("=== BIENVENUE AU JEU DE DAMES ===");
         System.out.println("Règles : Tapez les coordonnées 'x1 y1 x2 y2'.");
         System.out.println("Exemple : '0 6 1 5' déplace le pion de la colonne 0, ligne 6 vers colonne 1, ligne 5.");
         System.out.println("Commandes spéciales : 'sauver [nom]', 'charger [nom]', 'quitter'.");
-
         boolean jeuEnCours = true;
 
         while (jeuEnCours) {
