@@ -37,12 +37,15 @@ public class Piece implements Serializable {
      * Retourne le vecteur de direction unitaire (-1 ou 1) pour X et Y.
      */
     private int[] getDirectionStep(Direction direction) {
-        return switch (direction) {
-            case HAUT_GAUCHE -> new int[]{-1, -1};
-            case HAUT_DROIT  -> new int[]{ 1, -1};
-            case BAS_GAUCHE  -> new int[]{-1,  1};
-            case BAS_DROIT   -> new int[]{ 1,  1};
-        };
+        if (direction == Direction.HAUT_GAUCHE) {
+        this.pos = new Point2D(pos.getX() - 1, pos.getY() - 1);}
+        if (direction == Direction.BAS_DROIT) {
+        this.pos = new Point2D(pos.getX() + 1, pos.getY() - 1);}
+        if (direction == Direction.BAS_DROIT) {
+        this.pos = new Point2D(pos.getX() - 1, pos.getY() + 1);}
+        if (direction == Direction.BAS_DROIT) {
+        this.pos = new Point2D(pos.getX() + 1, pos.getY() + 1);}
+
     }
 
     /**
